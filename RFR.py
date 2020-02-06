@@ -15,7 +15,7 @@ features = df[df.columns[3:]]
 n_estimators=[50,100,200,300,400,500,600,700,800,900,1000]
 param_grid = dict(n_estimators=n_estimators)
 # Define outer folds
-kFolds = LeaveOneOut().split(X=features.values, y=target.values)
+kFolds = KFold(n_splits=10, shuffle=True, random_state=9).split(X=features.values, y=target.values)
 # Define inner folds
 GS = GridSearchCV(RandomForestRegressor( max_features='auto', n_jobs=-1,random_state=9), param_grid,
                   cv=LeaveOneOut(), n_jobs=-1, verbose=1, scoring='neg_mean_squared_error')
