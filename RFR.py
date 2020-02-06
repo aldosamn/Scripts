@@ -7,7 +7,7 @@ import csv
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 #Load the Dataset 
-df = pd.read_csv("final_dataset.csv", index_col=0)
+df = pd.read_csv("https://github.com/aldosamn/Scripts/blob/master/final_dataset.csv", index_col=0)
 target = df['Entropy']
 features = df[df.columns[3:]]
 
@@ -21,7 +21,7 @@ GS = GridSearchCV(RandomForestRegressor( max_features='auto', n_jobs=-1,random_s
                   cv=LeaveOneOut(), n_jobs=-1, verbose=1, scoring='neg_mean_squared_error')
 
 # Open results file and write out headers
-out_file = open("GridSearch_RFR_LOOCV.csv", 'w')
+out_file = open("https://github.com/aldosamn/Scripts/blob/master/GridSearch_RFR_LOOCV.csv", 'w')
 wr = csv.writer(out_file, dialect='excel')
 headers = ["n_estimators", "r2", "error_ma", "error_ms", "error_rms", "error_mp", "error_max"]
 wr.writerow(headers)
